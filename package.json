@@ -1,0 +1,22 @@
+{
+  "name": "express-starter",
+  "version": "1.0.0",
+  "description": "ExpressJS framework starter kit with setup of sessions, passport etc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jay8740/Express-Starter.git"
+  },
+  "author": "jayant8740",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jay8740/Express-Starter/issues"
+  },
+  "homepage": "https://github.com/jay8740/Express-Starter#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

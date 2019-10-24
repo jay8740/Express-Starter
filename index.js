@@ -2,12 +2,14 @@ var express = require("express");
 var session = require("express-session");
 var cookieParser = require("cookie-parser");
 var flash = require("connect-flash");
+var passport = require("passport");
+
+// initialize passport config;
+require('./config/passport');
 
 
-
-
-// import routers
-var homeRouter = require('./routers/index');
+// database connection
+var db = require("./db/connect");
 
 const app = express();
 
@@ -17,6 +19,8 @@ app.use(session({
     resave: true
 
 }))
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cookieParser("8r5f8s9&dsj"));
 app.use(flash());
 
@@ -28,17 +32,22 @@ app.use('/', (req, res, next) => {
     res.locals.flashMessages = req.flash();
     next();
 })
+
+// import routers
+var homeRouter = require('./routers/index');
+var authRouter = require('./routers/auth');
 // routing.
 app.get('/', homeRouter);
+app.get('/auth', authRouter);
 
 
 app.listen(3000, (err) => {
-    if(err) throw err;
+    if (err) throw err;
     else console.log("Listening on Port 3000");
 });
-a
+
 
 // should be used only once.
 function uniqueStringGenerator(length) {
-    return Math.random().toString(36).substr(13-length);
+    return Math.random().toString(36).substr(13 - length);
 }

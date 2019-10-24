@@ -26,6 +26,7 @@ app.use(flash());
 
 // set up view engine.
 app.set("view engine", "ejs");
+app.use(express.static('public'))
 
 // middleware update flashMessage var in view to req.flash().
 app.use('/', (req, res, next) => {
